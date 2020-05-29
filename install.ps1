@@ -19,8 +19,6 @@ Add-Content -Verbose -Path $profile -Value @"
 # END_AVDI_DOTFILES
 "@
 
-
-
 if ( -not $IsWindows) {
     Write-Error "This doesn't appear to be Windows" -ErrorAction Stop
 }
