@@ -19,6 +19,12 @@ Add-Content -Verbose -Path $profile -Value @"
 # END_AVDI_DOTFILES
 "@
 
+if ( $PSVersionTable -and ( $PSVersionTable.PSVersion -gt 5 ) ) {
+    Write-Host "Acceptable version of PowerShell found!"
+} else {
+    Write-Error -ErrorAction Stop "Pleae run me in a newer version of PowerShell: https://github.com/PowerShell/PowerShell/releases"
+}
+
 if ( -not $IsWindows) {
     Write-Error "This doesn't appear to be Windows" -ErrorAction Stop
 }
