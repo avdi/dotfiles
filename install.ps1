@@ -2,7 +2,6 @@ if ( -not (Test-Path $profile -Verbose) ) {
     New-Item -ItemType File -Force $profile -Verbose
 }
 
-$dotfiles_profile = Join-Path $PSScriptRoot profile.ps1
 $old_profile_contents = Get-Content -Path $profile -Verbose
 $omit = $false
 $old_profile_contents | Where-Object {
@@ -12,16 +11,17 @@ $old_profile_contents | Where-Object {
         Default { -not $omit }
     }
 } | Set-Content -Path $profile -Verbose
-Add-Content -Verbose -Path $profile -Value @"
+Add-Content -Verbose -Path $profile -Value @'
 
 # BEGIN_AVDI_DOTFILES
-. $dotfiles_profile
+. $env:USERPROFILE\dotfiles\profile.ps1
 # END_AVDI_DOTFILES
-"@
+'@
 
 if ( $PSVersionTable -and ( $PSVersionTable.PSVersion -gt 5 ) ) {
     Write-Host "Acceptable version of PowerShell found!"
-} else {
+}
+else {
     Write-Error -ErrorAction Stop "Pleae run me in a newer version of PowerShell: https://github.com/PowerShell/PowerShell/releases"
 }
 
