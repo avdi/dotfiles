@@ -73,3 +73,8 @@ else {
     $dotfiles_tasks_dir = Join-Path (Get-Item $PSScriptRoot) .rake
     New-Item -ItemType SymbolicLink -Path $tasks_dir -Target $dotfiles_tasks_dir -Verbose
 }
+
+Write-Host "Setting up Windows Terminal..."
+$winterm_settings_path = Join-Path $env:LOCALAPPDATA Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
+Copy-Item -Verbose $winterm_settings_path "$winterm_settings_path.pre_dotfiles"
+New-Item -Verbose -Force -ItemType SymbolicLink -Path $winterm_settings_path -Target (Join-Path (Get-Item $PSScriptRoot) .\WindowsTerminal\settings.json)
