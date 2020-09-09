@@ -46,7 +46,7 @@
             "commandline": "irb.cmd",
             "useAcrylic": true,
             "acrylicOpacity": 0.9,
-            "icon": "C:\\Users\\avdi\\OneDrive\\Pictures\\ruby.png"
+            "icon": "C:\\Users\\avdi\\OneDrive\\Pictures\\icons\\ruby.png"
         },
         {
             "guid": "{8ca33e68-8a49-4229-8e02-3cf36de168c0}",
@@ -55,7 +55,7 @@
             "commandline": "pry.bat",
             "useAcrylic": true,
             "acrylicOpacity": 0.9,
-            "icon": "C:\\Users\\avdi\\OneDrive\\Pictures\\pry.png"
+            "icon": "C:\\Users\\avdi\\OneDrive\\Pictures\\icons\\pry.png"
         },
         {
             "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
