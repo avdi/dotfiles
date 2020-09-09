@@ -1,2 +1,3 @@
 @coursehost:
-    ssh: learn./learn.avdi.codes
+    ssh: learn
+    path: learn.avdi.codes
