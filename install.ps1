@@ -78,3 +78,6 @@ Write-Host "Setting up Windows Terminal..."
 $winterm_settings_path = Join-Path $env:LOCALAPPDATA Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
 Copy-Item -Verbose $winterm_settings_path "$winterm_settings_path.pre_dotfiles"
 New-Item -Verbose -Force -ItemType SymbolicLink -Path $winterm_settings_path -Target (Join-Path (Get-Item $PSScriptRoot) .\WindowsTerminal\settings.json)
+
+Write-Host "Setting up WP-CLI config..."
+New-Item -Verbose -Force -ItemType SymbolicLink -Path (Join-Path $env:USERPROFILE .wp-cli) -Target (Join-Path (Get-Item $PSScriptRoot) .wp-cli)
