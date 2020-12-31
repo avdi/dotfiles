@@ -14,7 +14,11 @@ $old_profile_contents | Where-Object {
 Add-Content -Verbose -Path $profile -Value @'
 
 # BEGIN_AVDI_DOTFILES
-. $env:USERPROFILE\dotfiles\profile.ps1
+if ( Test-Path $env:USERPROFILE\dotfiles ) {
+    . $env:USERPROFILE\dotfiles\profile.ps1
+} else {
+    Write-Host "Missing $env:USERPROFILE\dotfiles. Run: git clone https://github.com/avdi/dotfiles.git"
+}
 # END_AVDI_DOTFILES
 '@
 
