@@ -1,3 +1,14 @@
+if ( $PSVersionTable -and ( $PSVersionTable.PSVersion.Major -gt 5 ) ) {
+    Write-Host "Acceptable version of PowerShell found!"
+}
+else {
+    Write-Error -ErrorAction Stop "Pleae run me in a newer version of PowerShell: https://github.com/PowerShell/PowerShell/releases"
+}
+
+if ( -not $IsWindows) {
+    Write-Error "This doesn't appear to be Windows" -ErrorAction Stop
+}
+
 if ( -not (Test-Path $profile -Verbose) ) {
     New-Item -ItemType File -Force $profile -Verbose
 }
@@ -21,17 +32,6 @@ if ( Test-Path $env:USERPROFILE\dotfiles ) {
 }
 # END_AVDI_DOTFILES
 '@
-
-if ( $PSVersionTable -and ( $PSVersionTable.PSVersion -gt 5 ) ) {
-    Write-Host "Acceptable version of PowerShell found!"
-}
-else {
-    Write-Error -ErrorAction Stop "Pleae run me in a newer version of PowerShell: https://github.com/PowerShell/PowerShell/releases"
-}
-
-if ( -not $IsWindows) {
-    Write-Error "This doesn't appear to be Windows" -ErrorAction Stop
-}
 
 Write-Host "Checking for Ruby 2..."
 try {
@@ -83,5 +83,16 @@ $winterm_settings_path = Join-Path $env:LOCALAPPDATA Packages\Microsoft.WindowsT
 Copy-Item -Verbose $winterm_settings_path "$winterm_settings_path.pre_dotfiles"
 New-Item -Verbose -Force -ItemType SymbolicLink -Path $winterm_settings_path -Target (Join-Path (Get-Item $PSScriptRoot) .\WindowsTerminal\settings.json)
 
-Write-Host "Setting up WP-CLI config..."
-New-Item -Verbose -Force -ItemType SymbolicLink -Path (Join-Path $env:USERPROFILE .wp-cli) -Target (Join-Path (Get-Item $PSScriptRoot) .wp-cli)
+$volatile_dir = (Join-Path $env:USERPROFILE ($env:DROPBOX ?? "Dropbox") config volatile)
+if (Test-Path -PathType Container $volatile_dir -Verbose) {
+    Write-Host "Setting up SSH config..."
+    $ssh_config_dir = (Join-Path $env:USERPROFILE .ssh)
+    New-Item -Verbose -Force -ItemType Directory -Path $ssh_config_dir
+    New-Item -Verbose -Force -ItemType HardLink -Path (Join-Path $ssh_config_dir config) -Target (Join-Path $volatile_dir .ssh config)
+    
+    Write-Host "Setting up WP-CLI config..."
+    New-Item -Verbose -Force -ItemType SymbolicLink -Path (Join-Path $env:USERPROFILE .wp-cli) -Target (Join-Path $volatile_dir .wp-cli)    
+}
+else {
+    Write-Error "Directory $volatile_dir not found"
+}
