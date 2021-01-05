@@ -2,7 +2,7 @@
 // For documentation on these settings, see: https://aka.ms/terminal-documentation
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
     "profiles": [
         {
             "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
@@ -37,7 +37,8 @@
             "name": "Ubuntu",
             "source": "Windows.Terminal.Wsl",
             "useAcrylic": true,
-            "acrylicOpacity": 0.9
+            "acrylicOpacity": 0.9,
+            "startingDirectory": "/home/avdi"
         },
         {
             "guid": "{49e494e3-b3d6-45c5-ac4d-44b06e9589c0}",
@@ -69,6 +70,19 @@
             "hidden": false,
             "name": "WLinux",
             "source": "Windows.Terminal.Wsl"
+        },
+        {
+            "guid": "{46ca431a-3a87-5fb3-83cd-11ececc031d2}",
+            "hidden": false,
+            "name": "kali-linux",
+            "source": "Windows.Terminal.Wsl"
+        },
+        {
+            "guid": "{58ad8b0c-3ef8-5f4d-bc6f-13e4c00f2530}",
+            "hidden": false,
+            "name": "Debian",
+            "source": "Windows.Terminal.Wsl",
+            "useAcrylic": false,
         }
     ],
     // Add custom color schemes to this array
