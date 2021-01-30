@@ -36,9 +36,10 @@
             "hidden": false,
             "name": "Ubuntu",
             "source": "Windows.Terminal.Wsl",
-            "useAcrylic": true,
-            "acrylicOpacity": 0.9,
-            "startingDirectory": "/home/avdi"
+            "useAcrylic": false,
+            "startingDirectory": "//wsl$/Ubuntu/home/avdi",
+            "cursorShape": "filledBox",
+            "fontSize": 18
         },
         {
             "guid": "{49e494e3-b3d6-45c5-ac4d-44b06e9589c0}",
@@ -64,19 +65,6 @@
             "name": "Azure Cloud Shell",
             "source": "Windows.Terminal.Azure",
             "useAcrylic": true
-        },
-        {
-            "guid": "{7f586916-8357-53d4-bb2b-ca96f639898a}",
-            "hidden": false,
-            "name": "WLinux",
-            "source": "Windows.Terminal.Wsl"
-        },
-        {
-            "guid": "{58ad8b0c-3ef8-5f4d-bc6f-13e4c00f2530}",
-            "hidden": false,
-            "name": "Debian",
-            "source": "Windows.Terminal.Wsl",
-            "useAcrylic": false,
         }
     ],
     // Add custom color schemes to this array
