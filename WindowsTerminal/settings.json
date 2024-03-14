@@ -36,10 +36,11 @@
             "hidden": false,
             "name": "Ubuntu",
             "source": "Windows.Terminal.Wsl",
-            "useAcrylic": false,
+            "useAcrylic": true,
+            "acrylicOpacity": 0.9,
             "startingDirectory": "//wsl$/Ubuntu/home/avdi",
-            "cursorShape": "filledBox",
-            "fontSize": 18
+            // "cursorShape": "filledBox",
+            // "fontSize": 18
         },
         {
             "guid": "{49e494e3-b3d6-45c5-ac4d-44b06e9589c0}",
