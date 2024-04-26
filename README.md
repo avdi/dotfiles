@@ -11,10 +11,3 @@ AKA stuff I couldn't automate. Yet.
   ```
 - Run .\install.ps1 in PowerShell Core
 
-# Notes on Apps
-
-## VS Code
-
-I'm currently synchronizing VS Code via this extension: https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync
-
-NOT in the dotfiles repo. 
