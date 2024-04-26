@@ -92,6 +92,9 @@ if (Test-Path -PathType Container $volatile_dir -Verbose) {
     
     Write-Host "Setting up WP-CLI config..."
     New-Item -Verbose -Force -ItemType SymbolicLink -Path (Join-Path $env:USERPROFILE .wp-cli) -Target (Join-Path $volatile_dir .wp-cli)    
+
+    Write-Host "Setting up convenience link to $volatile_dir ..."
+    New-Item -Verbose -Force -ItemType SymbolicLink -Path (Join-Path $PSScriptRoot volatile) -Value $volatile_dir
 }
 else {
     Write-Error "Directory $volatile_dir not found"
