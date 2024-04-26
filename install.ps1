@@ -89,6 +89,10 @@ if (Test-Path -PathType Container $volatile_dir -Verbose) {
     $ssh_config_dir = (Join-Path $env:USERPROFILE .ssh)
     New-Item -Verbose -Force -ItemType Directory -Path $ssh_config_dir
     New-Item -Verbose -Force -ItemType HardLink -Path (Join-Path $ssh_config_dir config) -Target (Join-Path $volatile_dir .ssh config)
+    $extra_ssh_config_files = Get-ChildItem -Path (Join-Path $volatile_dir .ssh) -File -Filter "config_*"
+    foreach ($config_file in $extra_ssh_config_files) {
+        New-Item -Verbose -Force -ItemType HardLink -Path (Join-Path $ssh_config_dir (Split-Path -Path $config_file -Leaf)) -Target $config_file
+    }
     
     Write-Host "Setting up WP-CLI config..."
     New-Item -Verbose -Force -ItemType SymbolicLink -Path (Join-Path $env:USERPROFILE .wp-cli) -Target (Join-Path $volatile_dir .wp-cli)    
