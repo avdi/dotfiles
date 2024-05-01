@@ -1,3 +1,7 @@
+# Make `wsl` not emit spurious nulls (why is this not the default???)
+# See https://stackoverflow.com/questions/64104790/powershell-strange-wsl-output-string-encoding
+$env:WSL_UTF8=1
+
 function marco {
     Write-Host "Polo!"
 }
