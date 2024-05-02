@@ -11,3 +11,6 @@ AKA stuff I couldn't automate. Yet.
   ```
 - Run .\install.ps1 in PowerShell Core
 
+## TODO
+
+- Get .wslconfig into here
