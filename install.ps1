@@ -98,8 +98,15 @@ if (Test-Path -PathType Container $volatile_dir -Verbose) {
     New-Item -Verbose -Force -ItemType SymbolicLink -Path (Join-Path $env:USERPROFILE .wp-cli) -Target (Join-Path $volatile_dir .wp-cli)    
 
     Write-Host "Setting up convenience link to $volatile_dir ..."
-    New-Item -Verbose -Force -ItemType SymbolicLink -Path (Join-Path $PSScriptRoot volatile) -Value $volatile_dir
+    New-Item -Verbose -Force -ItemType SymbolicLink -Path (Join-Path $PSScriptRoot volatile) -Target $volatile_dir
 }
 else {
     Write-Error "Directory $volatile_dir not found"
 }
+
+Write-Host "Configuring WSL..."
+$win_wsl_conf_path = Join-Path $PSScriptRoot .\wsl\wsl.conf
+$wsl_wsl_conf_path = wsl -e wslpath $win_wsl_conf_path
+wsl -e sudo cp $wsl_wsl_conf_path /etc/wsl.conf
+Write-Host "Waiting 10s for WSL to shut down..."
+Start-Sleep -Seconds 10

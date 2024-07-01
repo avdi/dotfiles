@@ -11,3 +11,8 @@ AKA stuff I couldn't automate. Yet.
   ```
 - Run .\install.ps1 in PowerShell Core
 
+## WSL
+
+### SSH Config Sync
+
+- https://superuser.com/questions/1183176/can-i-share-my-ssh-keys-between-wsl-and-windows
